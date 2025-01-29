@@ -1,0 +1,30 @@
+services:
+  spring-api:
+    build: .
+    hostname: 'spring-api'
+    environment:
+      SERVER_PORT: 1212
+      DATABASE_URL: jdbc:mysql://db-mysql:3306/alura
+      DATABASE_USERNAME: parisi
+      DATABASE_PASSWORD: alura123
+    depends_on:
+      db-mysql:
+        condition: service_healthy
+    networks:
+      - app-network
+  db-mysql:
+    image: mysql:8.0.33
+    hostname: db-mysql
+    environment:
+      MYSQL_USER: parisi
+      MYSQL_PASSWORD: alura123
+      MYSQL_DATABASE: alura
+      MYSQL_ROOT_PASSWORD: root
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      retries: 5
+    networks:
+      - app-network
+networks:
+  app-network:
