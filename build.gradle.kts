@@ -38,5 +38,5 @@ dependencies {
 }
 
 tasks.withType<Test> {
-	useTestNG()
+	useJUnit()
 }
