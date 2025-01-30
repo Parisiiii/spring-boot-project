@@ -14,4 +14,4 @@ RUN gradle build -x test
 COPY /build/libs/alura-curso-0.0.1-SNAPSHOT.jar /aplicacao.jar
 
 EXPOSE 1212
-ENTRYPOINT ["java", "-XX:+UseContainerSupport", "-jar", "/aplicacao.jar"]
+ENTRYPOINT ["java", "-XX:+UseContainerSupport","-jar", "/aplicacao.jar"]
