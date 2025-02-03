@@ -9,7 +9,7 @@ COPY src /alura/src
 COPY build.gradle.kts /alura
 COPY .gradle /alura
 
-RUN gradle build -x test
+RUN gradle build
 
 COPY /build/libs/alura-curso-0.0.1-SNAPSHOT.jar /aplicacao.jar
 

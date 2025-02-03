@@ -1,38 +1,22 @@
 services:
-  spring-api:
-    build: .
-    hostname: spring-api
-    container_name: spring-api
-    ports:
-      - '8080:8080'
-    environment:
-      SERVER_PORT: 8080
-      DATABASE_URL: jdbc:mysql://db-mysql:8081/lucasdb&allowPublicKeyRetrieval=true
-      DATABASE_USERNAME: parisi
-      DATABASE_PASSWORD: lucas123
-    depends_on:
-      db-mysql:
-        condition: service_healthy
-    restart: on-failure
-    networks:
-      - app-network
   db-mysql:
     image: mysql:8.0.33
-    ports:
-      - '8081:3306'
     hostname: db-mysql
     container_name: db-mysql
+    ports:
+      - "3306:3306"
     environment:
+      MYSQL_DATABASE: lucasdb
       MYSQL_USER: parisi
       MYSQL_PASSWORD: lucas123
-      MYSQL_DATABASE: lucasdb
       MYSQL_ROOT_PASSWORD: root
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot" ]
+      interval: 5s
+      retries: 10
+      start_period: 10s
     networks:
       - app-network
+
 networks:
   app-network:
