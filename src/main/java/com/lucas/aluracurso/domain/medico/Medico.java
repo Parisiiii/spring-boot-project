@@ -2,11 +2,11 @@ package com.lucas.aluracurso.domain.medico;
 
 
 import com.lucas.aluracurso.application.medico.MedicoDTO;
-import com.lucas.aluracurso.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.JdbcTypeCode;
 
+import java.math.BigDecimal;
 import java.sql.Types;
 import java.util.UUID;
 
@@ -29,7 +29,18 @@ public class Medico {
     private String CRM;
     @Column(nullable = false)
     private String especialidade;
-
+    @Column(nullable = false)
+    private String logradouro;
+    private Integer numero;
+    private String complemento;
+    @Column(nullable = false)
+    private String bairro;
+    @Column(nullable = false)
+    private Integer cep;
+    @Column(nullable = false)
+    private String cidade;
+    @Column(nullable = false)
+    private String uf;
 
     protected Medico(MedicoDTO dto) {
         this.especialidade = dto.especialidade();

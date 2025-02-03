@@ -1,8 +1,6 @@
 package com.lucas.aluracurso.domain.medico;
 
-import com.lucas.aluracurso.application.endereco.EnderecoDTO;
 import com.lucas.aluracurso.application.medico.MedicoDTO;
-import com.lucas.aluracurso.domain.endereco.Endereco;
 import jakarta.persistence.EntityManager;
 
 import java.util.ArrayList;
@@ -17,18 +15,6 @@ public class MedicoRepositoryImpl implements MedicoRepositoryCustom {
     }
 
     @Override
-    public Medico findByUUID(UUID medicoUUID) {
-        String query = """
-                SELECT * FROM medico WHERE medico.id = :medicoUUID
-                """;
-
-        return (Medico) entityManager
-                .createNativeQuery(query)
-                .setParameter("medicoUUID", medicoUUID)
-                .getSingleResult();
-    }
-
-    @Override
     public List<MedicoDTO> listAll(String orderBy, Integer page, Integer pageSize) {
         String query = """
                 SELECT id,
@@ -36,7 +22,14 @@ public class MedicoRepositoryImpl implements MedicoRepositoryCustom {
                        telefone,
                        email,
                        CRM,
-                       especialidade
+                       especialidade,
+                       logradouro,
+                       complemento,
+                       numero,
+                       cep,
+                       cidade,
+                       uf,
+                       bairro
                 FROM medico
                 ORDER BY :orderby
                 LIMIT :page, :pageSize
@@ -57,7 +50,14 @@ public class MedicoRepositoryImpl implements MedicoRepositoryCustom {
             String email = (String) row[3];
             String crm = (String) row[4];
             String especialidade = (String) row[5];
-            toReturn.add(new MedicoDTO(UUID.fromString(id), nome, telefone, email, crm, especialidade));
+            String logradouro = (String) row[6];
+            String complemento = (String) row[7];
+            Integer numero = (Integer) row[8];
+            Integer cep = (Integer) row[9];
+            String cidade = (String) row[10];
+            String uf = (String) row[11];
+            String bairro = (String) row[12];
+            toReturn.add(new MedicoDTO(UUID.fromString(id), nome, telefone, email, crm, especialidade, logradouro, numero, complemento, bairro, cep, cidade, uf));
         }
 
         return toReturn;

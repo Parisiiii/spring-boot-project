@@ -20,10 +20,6 @@ public class MedicoService {
         return repository.save(medico);
     }
 
-    public Medico findByUUID(UUID uuid) {
-        return repository.findByUUID(uuid);
-    }
-
     public List<MedicoDTO> findAll(String orderBy, Integer page, Integer pageSize){
         return repository.listAll(orderBy, page, pageSize);
     }
