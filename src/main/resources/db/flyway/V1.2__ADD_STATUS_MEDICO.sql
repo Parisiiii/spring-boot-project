@@ -1,0 +1,1 @@
+alter table medico add column status char(1) not null default 'I';

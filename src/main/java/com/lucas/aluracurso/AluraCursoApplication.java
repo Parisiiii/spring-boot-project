@@ -9,3 +9,4 @@ public class AluraCursoApplication {
 		SpringApplication.run(AluraCursoApplication.class, args);
 	}
 }
+

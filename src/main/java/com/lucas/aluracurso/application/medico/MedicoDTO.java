@@ -1,28 +1,27 @@
 package com.lucas.aluracurso.application.medico;
 
 import com.lucas.aluracurso.domain.medico.Medico;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 
 public record MedicoDTO(UUID id,
-                        @NotNull String nome,
+                        @NotBlank String nome,
                         String telefone,
-                        @NotNull String email,
-                        @NotNull String CRM,
-                        @NotNull String especialidade,
-                        String logradouro,
-                        Integer numero,
-                        String complemento,
-                        String bairro,
-                        Integer cep,
-                        String cidade,
-                        String uf) {
-    MedicoDTO(Medico medico) {
+                        @NotBlank String email,
+                        @NotBlank String CRM,
+                        String especialidade,
+                        String status,
+                        @Valid EnderecoDTO endereco) {
+    private MedicoDTO(Medico medico) {
         this(medico.getId(), medico.getNome(), medico.getTelefone(), medico.getEmail(), medico.getCRM(),
-                medico.getEspecialidade(), medico.getLogradouro(), medico.getNumero(), medico.getComplemento(), medico.getBairro(), medico.getCep(), medico.getCidade(), medico.getUf());
+                medico.getEspecialidade(), medico.getStatus().getDescricao(), new EnderecoDTO(medico));
+    }
+
+    public static MedicoDTO of(Medico medico) {
+        return new MedicoDTO(medico);
     }
 }
 
