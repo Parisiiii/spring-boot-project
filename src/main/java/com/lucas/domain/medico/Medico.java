@@ -1,9 +1,9 @@
-package com.lucas.aluracurso.domain.medico;
+package com.lucas.domain.medico;
 
 
-import com.lucas.aluracurso.application.medico.MedicoDTO;
-import com.lucas.aluracurso.domain.converters.StatusAttributeConverter;
-import com.lucas.aluracurso.domain.enums.Status;
+import com.lucas.application.medico.MedicoDTO;
+import com.lucas.domain.converters.StatusAttributeConverter;
+import com.lucas.domain.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

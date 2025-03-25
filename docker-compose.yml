@@ -17,6 +17,33 @@ services:
       start_period: 10s
     networks:
       - app-network
-
+  flyway:
+    image: redgate/flyway
+    container_name: flyway
+    hostname: flyway
+    command: migrate -user=parisi -password=lucas123 -connectRetries=60
+    volumes:
+      - ./flyway/sql/:/flyway/sql
+      - ./flyway/conf/:/flyway/conf
+    depends_on:
+      db-mysql:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: no
+  spring-api:
+    build: .
+    hostname: spring-api
+    container_name: spring-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      flyway:
+        condition: service_completed_successfully
+      db-mysql:
+        condition: service_healthy
+    restart: on-failure
+    networks:
+      - app-network
 networks:
   app-network:

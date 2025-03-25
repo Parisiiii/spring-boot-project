@@ -1,6 +1,6 @@
-package com.lucas.aluracurso.domain.converters;
+package com.lucas.domain.converters;
 
-import com.lucas.aluracurso.domain.enums.Status;
+import com.lucas.domain.enums.Status;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

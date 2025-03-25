@@ -1,4 +1,4 @@
-package com.lucas.aluracurso.domain.enums;
+package com.lucas.domain.enums;
 
 import lombok.Getter;
 

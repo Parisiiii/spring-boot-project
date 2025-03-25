@@ -1,4 +1,4 @@
-package com.lucas.aluracurso.domain.medico;
+package com.lucas.domain.medico;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

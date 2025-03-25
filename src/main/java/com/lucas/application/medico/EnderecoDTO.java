@@ -1,6 +1,6 @@
-package com.lucas.aluracurso.application.medico;
+package com.lucas.application.medico;
 
-import com.lucas.aluracurso.domain.medico.Medico;
+import com.lucas.domain.medico.Medico;
 
 public record EnderecoDTO(
         String logradouro,

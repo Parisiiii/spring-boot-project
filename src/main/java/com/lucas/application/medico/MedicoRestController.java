@@ -1,8 +1,8 @@
-package com.lucas.aluracurso.application.medico;
+package com.lucas.application.medico;
 
 
-import com.lucas.aluracurso.domain.medico.Medico;
-import com.lucas.aluracurso.domain.medico.MedicoService;
+import com.lucas.domain.medico.Medico;
+import com.lucas.domain.medico.MedicoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

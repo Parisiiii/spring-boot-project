@@ -1,6 +1,6 @@
-package com.lucas.aluracurso.domain.medico;
+package com.lucas.domain.medico;
 
-import com.lucas.aluracurso.application.medico.MedicoDTO;
+import com.lucas.application.medico.MedicoDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
